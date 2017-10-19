@@ -60,7 +60,7 @@ How to use:
 
 
     ```
-    $ git clone https://github.com/omidraha/atlassian
+    $ git clone https://github.com/arizonacoders/atlassian
     ```
 
 2. Set environment variables:
@@ -74,7 +74,7 @@ How to use:
 
 
     ```
-    $ docker-compose -p atlassian up
+    $ docker-compose -p -d atlassian up
     ```
     
 4. Set `DNS` according to the above `DOMAIN` value, on somewhere that you want to connect to host of `docker-compose`:
