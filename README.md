@@ -33,9 +33,9 @@ jira.example.com   wiki.example.com   bitbucket.example.com
 
 Atlassian supported products:
 
-- Jira `7.0.5`
-- Confluence `5.9.4`
-- Bitbucket `4.14`
+- Jira `7.5.1`
+- Confluence `6.3.4`
+- Bitbucket `5.4.1`
 
 With:
 - Postgres `9.4`
