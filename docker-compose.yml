@@ -39,10 +39,10 @@ services:
       - confluence
       - bitbucket
     volumes:
-    - ./:/src
+      - ./:/src
     command: ./src/scripts/run_nginx.sh
     environment:
-    - DOMAIN
+      - DOMAIN
 volumes:
   jira-data:
   confluence-data:
