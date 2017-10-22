@@ -7,8 +7,6 @@ services:
       - database
     volumes:
       - jira-data:/var/atlassian/jira
-    environment:
-      - VIRTUAL_HOST=jira.arizonacoders.com
 
   confluence:
     image: cptactionhank/atlassian-confluence:6.3.4
@@ -17,8 +15,6 @@ services:
       - database
     volumes:
       - confluence-data:/var/atlassian/confluence
-    environment:
-      - VIRTUAL_HOST=wiki.arizonacoders.com
 
   bitbucket:
     image: atlassian/bitbucket-server:5.4.1
@@ -27,26 +23,27 @@ services:
       - database
     volumes:
       - bitbucket-data:/var/atlassian/application-data/bitbucket
-    environment:
-      - VIRTUAL_HOST=bitbuck.arizonacoders.com
 
   database:
     image: postgres:9.4
     restart: always
     volumes:
       - database-data:/var/lib/postgresql/data
-
-  rproxy :
-    image: eforce21/letsencrypt-nginx-proxy:1.0.2
-    ports:
-      - "{{IP}}:80:80"
-      - "{{IP}}:443:443"
-    volumes:
-      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+  nginx:
+    image: nginx
     restart: always
+    ports:
+      - "80:80"
+    links:
+      - jira
+      - confluence
+      - bitbucket
+    volumes:
+      - ./:/src
+    command: ./src/scripts/run_nginx.sh
     environment:
-      - LETSENCRYPT_EMAIL=myown@email.address
-    
+      - DOMAIN
+
 volumes:
   jira-data:
   confluence-data:
