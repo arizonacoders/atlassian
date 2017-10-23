@@ -42,7 +42,7 @@ services:
       - ./:/src
     command: ./src/scripts/run_nginx.sh
     environment:
-      - DOMAIN="{FULL_DOMAIN}
+      - DOMAIN=${FULL_DOMAIN}
 
 volumes:
   jira-data:
