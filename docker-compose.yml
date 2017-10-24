@@ -6,6 +6,7 @@ services:
     links:
       - database
     volumes:
+      - jira-logs:/opt/atlassian/jira/logs
       - jira-data:/var/atlassian/jira
 
   confluence:
@@ -47,6 +48,7 @@ services:
 
 volumes:
   jira-data:
+  jira-logs:
   confluence-data:
   confluence-logs
   bitbucket-data:
