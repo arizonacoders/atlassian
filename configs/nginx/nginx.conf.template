@@ -37,6 +37,7 @@ http {
 
     server {
         listen       80;
+        listen       443 ssl;
         server_name  jira.${DOMAIN} www.jira.${DOMAIN};
 
         location / {
@@ -54,6 +55,7 @@ http {
 
     server {
         listen       80;
+        listen       443 ssl;
         server_name  wiki.${DOMAIN} www.wiki.${DOMAIN};
 
         location / {
@@ -70,6 +72,7 @@ http {
 
     server {
         listen       80;
+        listen       443 ssl;
         server_name  bitbucket.${DOMAIN} www.bitbucket.${DOMAIN};
 
         location / {
