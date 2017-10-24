@@ -51,6 +51,6 @@ volumes:
   jira-data:
   jira-logs:
   confluence-data:
-  confluence-logs
+  confluence-logs:
   bitbucket-data:
   database-data:
