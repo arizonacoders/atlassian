@@ -36,6 +36,7 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "445:445"
     links:
       - jira
       - confluence
