@@ -3,8 +3,6 @@ services:
   jira:
     image: cptactionhank/atlassian-jira-software:7.5.1
     restart: always
-    links:
-      - database
     volumes:
       - jira-logs:/opt/atlassian/jira/logs
       - jira-data:/var/atlassian/jira
@@ -12,25 +10,10 @@ services:
   confluence:
     image: cptactionhank/atlassian-confluence:6.3.4
     restart: always
-    links:
-      - database
     volumes:
       - confluence-logs:/opt/atlassian/confluence/logs
       - confluence-data:/var/atlassian/confluence
 
-  bitbucket:
-    image: atlassian/bitbucket-server:5.4.1
-    restart: always
-    links:
-      - database
-    volumes:
-      - bitbucket-data:/var/atlassian/application-data/bitbucket
-
-  database:
-    image: postgres:9.4
-    restart: always
-    volumes:
-      - database-data:/var/lib/postgresql/data
   nginx:
     image: nginx
     restart: always
@@ -40,7 +23,6 @@ services:
     links:
       - jira
       - confluence
-      - bitbucket
     volumes:
       - ./:/src
     command: ./src/scripts/run_nginx.sh
